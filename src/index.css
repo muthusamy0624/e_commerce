@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold-primary: #d4af37;
+  --gold-secondary: #f0e6d2;
+  --gold-dark: #b68b22;
+  --gold-light: #bfa857;
+  --bg-dark: #0b0c10;
+  --bg-card: #121417;
+  --text-light: #f0e6d2;
+}
+
+/* Smooth animations */
+* {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  overflow: hidden;
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-secondary) 50%, var(--gold-dark) 100%);
+}
+
+.gold-text-gradient {
+  background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass-effect {
+  background: rgba(18, 20, 23, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* Input fields with simple placeholders */
+.simple-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 1px solid rgba(191, 168, 87, 0.3);
+  border-radius: 0.5rem;
+  background: rgba(28, 30, 38, 0.3);
+  color: var(--text-light);
+  font-size: 1rem;
+  outline: none;
+}
+
+.simple-input:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+}
+
+.simple-input::placeholder {
+  color: var(--gold-light);
+  opacity: 0.7;
+}
+
+/* Password strength indicator */
+.password-strength {
+  height: 4px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* Animated background elements */
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+  z-index: -1;
+}
+
+.orb-1 {
+  width: 300px;
+  height: 300px;
+  background: var(--gold-primary);
+  top: 20%;
+  left: 10%;
+  animation: float 8s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 400px;
+  height: 400px;
+  background: var(--gold-dark);
+  bottom: 15%;
+  right: 10%;
+  animation: float 10s ease-in-out infinite reverse;
+}
+
+.orb-3 {
+  width: 250px;
+  height: 250px;
+  background: var(--gold-secondary);
+  top: 50%;
+  right: 20%;
+  animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.25; transform: scale(1.1); }
+}
+
+/* Button hover effect */
+.gold-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.gold-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    rgba(255, 255, 255, 0.1) 100%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.gold-button:hover::after {
+  transform: translateX(100%);
+}
+
+/* Custom logo styling */
+.roi-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-dark) 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+  transform: rotate(15deg);
+  margin-right: 12px;
+}
+
+.logo-icon svg {
+  transform: rotate(-15deg);
+  width: 24px;
+  height: 24px;
+}
+
+.logo-text {
+  font-size: 1.75rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.5px;
+}
+
+.logo-text span {
+  font-weight: 400;
+  font-size: 0.9em;
+}
+
+/* Chart icon for ROI concept */
+.chart-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.chart-icon path {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* Dashboard specific styles */
+.sidebar {
+  transition: all 0.3s ease;
+}
+
+.notification-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  background: #ef4444;
+  border-radius: 50%;
+  border: 2px solid #121417;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(212, 175, 55, 0.1), 0 10px 10px -5px rgba(212, 175, 55, 0.04);
+}
+
+.order-row:hover {
+  background: rgba(212, 175, 55, 0.05);
+}
+
+/* Custom scrollbar styles */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.5);
+}
+
+/* Hide scrollbar for webkit browsers */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+} 
+
+/* Tailwind base import and custom properties */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-dark: #18181b;
+  --bg-light: #f9fafb;
+  --gold-primary: #ffd700;
+  --gold-secondary: #e5c100;
+  --gold-muted: #bfae7c;
+  --gold-light: #fffbe6;
+  --luxe-black: #18181b;
+  --luxe-dark: #23232b;
+  --luxe-gold: #ffd700;
+  --luxe-gold-muted: #bfae7c;
+  --luxe-gold-light: #fffbe6;
+}
+
+.dark-theme {
+  background-color: var(--bg-dark);
+  color: var(--luxe-gold-light);
+}
+
+.light-theme {
+  background-color: var(--bg-light);
+  color: #23232b;
+}
+
+body, html {
+  min-height: 100vh;
+}
+
+/* Optional: override Tailwind classes for light/dark theme */
+.light-theme .bg-luxe-dark,
+.light-theme .bg-luxe-black {
+  background-color: var(--bg-light) !important;
+}
+.light-theme .text-luxe-gold-light {
+  color: #23232b !important;
+}
+.light-theme .glass-effect {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(12px);
+}
+
+.dark-theme .bg-luxe-dark,
+.dark-theme .bg-luxe-black {
+  background-color: var(--bg-dark) !important;
+}
+.dark-theme .text-luxe-gold-light {
+  color: var(--luxe-gold-light) !important;
+}
+.dark-theme .glass-effect {
+  background: rgba(24, 24, 27, 0.7) !important;
+  backdrop-filter: blur(12px);
+} 
